@@ -132,3 +132,51 @@ Parts of this project are based on the following repositories:
 
 ## License
 [License](LICENSE.md)
+
+### 3D Object detection
+
+##1.Compute Lidar Point-Cloud from Range Image
+
+This task is about extracting two of the data channels within the range image, which are "range" and "intensity", and convert the floating-point data to an 8-bit integer value range. Later crop range image to +/- 90 deg. left and right of the forward-facing x-axis then stack cropped range and intensity image vertically and visualize the result. Following result is shown below
+
+![range_int_img](https://user-images.githubusercontent.com/49077871/196755672-4c2e707c-84a9-4ba1-a52d-3cc5ba2ff132.PNG)
+
+# Visualize lidar point-cloud
+
+The goal of this task is to use the Open3D library to display the lidar point-cloud in a 3d viewer in order to develop a feel for the nature of lidar point-clouds. Below the are few results of this exercise.
+
+![3d_pcl](https://user-images.githubusercontent.com/49077871/196756614-5e377e06-94f0-44fe-936e-ceba76905c3f.png)
+![3d_pcl_2](https://user-images.githubusercontent.com/49077871/196756653-dd04d041-dd01-4225-b7b9-668c5ff094a4.png)
+![3d_pcl_3](https://user-images.githubusercontent.com/49077871/196762729-c41ad843-9116-4dbc-a8d8-455fe078168d.png)
+![3d_pcl_4](https://user-images.githubusercontent.com/49077871/196762760-e809bdc5-e501-46d9-a266-b48e8465bbde.png)
+![3d_pcl_5](https://user-images.githubusercontent.com/49077871/196762783-7e86335c-7d6a-4fbe-952c-b2cab1262171.png)
+![3d_pcl_7](https://user-images.githubusercontent.com/49077871/196762798-1a6ccb51-8426-4546-b77a-9201d04f4796.png)
+![3d-pcl_6](https://user-images.githubusercontent.com/49077871/196763423-40c1014d-4b87-41af-9779-e8d1333a9831.png)
+![3d_pcl_8](https://user-images.githubusercontent.com/49077871/196763481-1d5174ed-e6c0-4146-838c-642a0e9dd9ba.png)
+![3d_pcl_9](https://user-images.githubusercontent.com/49077871/196763537-d927e792-02fd-4894-8c92-ab771f141841.png)
+![3d_pcl_10](https://user-images.githubusercontent.com/49077871/196763591-9b2846e1-426c-4e03-9bbd-d32c601f4353.png)
+
+From the above images it can be clearly observed that the dominant parts that appear in the LIDAR point cloud are tail lamps, bumper, front light. Sometimes when the cars are at an angle side mirrors also appear clearly. 
+
+##2.Create Birds-Eye View from Lidar PCL
+
+In first step is to create a birds-eye view (BEV) perspective of the lidar point-cloud. Based on the (x,y)-coordinates in sensor space, respective coordinates within the BEV coordinate space are computed the the actual BEV map can be filled with lidar data from the point-cloud. once this task is done the respestice height and intensity map of the same is computed as well, which are shown below
+
+![bev_from_pcl](https://user-images.githubusercontent.com/49077871/196767226-61027753-5efc-415e-b994-97e9e4b3553d.png)
+
+Height Map
+![bev_hei](https://user-images.githubusercontent.com/49077871/196767304-19bbb818-f99f-4f23-85ff-e2468559fb8a.png)
+
+Intensity Map
+![bev_int](https://user-images.githubusercontent.com/49077871/196767374-c59e25d6-f642-4f30-8be0-d95ef52d98b9.png)
+
+##3.Model-based Object Detection in BEV Image
+
+The goal of this task is to illustrate how a new model can be integrated into an existing framework. for this initially 
+1. 
+
+
+
+
+
+
