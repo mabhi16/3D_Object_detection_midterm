@@ -219,7 +219,6 @@ def detect_objects(input_bev_maps, model, configs):
     # Extract 3d bounding boxes from model response
     print("student task ID_S3_EX2")
     objects = [] 
-
     ## step 1 : check whether there are any detections
     for box in detections:
         id, bev_x, bev_y, z, h, bev_w, bev_l, yaw = box
@@ -235,6 +234,6 @@ def detect_objects(input_bev_maps, model, configs):
             ## step 4 : append the current object to the 'objects' array
             objects.append([1, x, y, z, h, w, l, yaw])
     #######
-    ####### ID_S3_EX2 START #######         
+    ####### ID_S3_EX2 END #######       
     return objects    
 
