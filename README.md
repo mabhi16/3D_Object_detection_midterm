@@ -135,7 +135,7 @@ Parts of this project are based on the following repositories:
 
 ### 3D Object detection
 
-##1.Compute Lidar Point-Cloud from Range Image
+## 1.Compute Lidar Point-Cloud from Range Image
 
 This task is about extracting two of the data channels within the range image, which are "range" and "intensity", and convert the floating-point data to an 8-bit integer value range. Later crop range image to +/- 90 deg. left and right of the forward-facing x-axis then stack cropped range and intensity image vertically and visualize the result. Following result is shown below
 
@@ -158,19 +158,21 @@ The goal of this task is to use the Open3D library to display the lidar point-cl
 
 From the above images it can be clearly observed that the dominant parts that appear in the LIDAR point cloud are tail lamps, bumper, front light. Sometimes when the cars are at an angle side mirrors also appear clearly. 
 
-##2.Create Birds-Eye View from Lidar PCL
+## 2.Create Birds-Eye View from Lidar PCL
 
 In first step is to create a birds-eye view (BEV) perspective of the lidar point-cloud. Based on the (x,y)-coordinates in sensor space, respective coordinates within the BEV coordinate space are computed the the actual BEV map can be filled with lidar data from the point-cloud. once this task is done the respestice height and intensity map of the same is computed as well, which are shown below
 
 ![bev_from_pcl](https://user-images.githubusercontent.com/49077871/196767226-61027753-5efc-415e-b994-97e9e4b3553d.png)
 
 Height Map
+
 ![bev_hei](https://user-images.githubusercontent.com/49077871/196767304-19bbb818-f99f-4f23-85ff-e2468559fb8a.png)
 
 Intensity Map
+
 ![bev_int](https://user-images.githubusercontent.com/49077871/196767374-c59e25d6-f642-4f30-8be0-d95ef52d98b9.png)
 
-##3.Model-based Object Detection in BEV Image
+## 3.Model-based Object Detection in BEV Image
 
 The goal of this task is to illustrate how a new model can be integrated into an existing framework. for this initially 
 1. 
