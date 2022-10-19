@@ -55,9 +55,11 @@ data_filename = 'training_segment-1005081002024129653_5313_150_5333_150_with_cam
 # data_filename = 'training_segment-10963653239323173269_1924_000_1944_000_with_camera_labels.tfrecord' # Sequence 3
 show_only_frames = [0, 200] # show only frames in interval for debugging
 
-## Prepare Waymo Open Dataset file for loading
 data_fullpath = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'dataset', data_filename) # adjustable path in case this script is called from another working directory
-results_fullpath = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'results')
+model= "fpn-resnet" # options are 'darknet', 'resnet'
+model_res = "resnet"
+sequence = "1"
+results_fullpath = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'results/' + model + '/results_sequence_' + sequence + '_' + model_res)
 datafile = WaymoDataFileReader(data_fullpath)
 datafile_iter = iter(datafile)  # initialize dataset iterator
 
