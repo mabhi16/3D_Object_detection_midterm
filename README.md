@@ -134,7 +134,7 @@ Parts of this project are based on the following repositories:
 
 # 3D Object detection
 
-## 1.Compute Lidar Point-Cloud from Range Image
+## 1. Compute Lidar Point-Cloud from Range Image
 
 This task is about extracting two of the data channels within the range image, which are "range" and "intensity", and convert the floating-point data to an 8-bit integer value range. Later crop range image to +/- 90 deg. left and right of the forward-facing x-axis then stack cropped range and intensity image vertically and visualize the result. Following result is shown below
 
@@ -157,7 +157,7 @@ The goal of this task is to use the Open3D library to display the lidar point-cl
 
 From the above images it can be clearly observed that the dominant parts that appear in the LIDAR point cloud are tail lamps, bumper, front light. Sometimes when the cars are at an angle side mirrors also appear clearly. 
 
-## 2.Create Birds-Eye View from Lidar PCL
+## 2. Create Birds-Eye View from Lidar PCL
 
 In first step is to create a birds-eye view (BEV) perspective of the lidar point-cloud. Based on the (x,y)-coordinates in sensor space, respective coordinates within the BEV coordinate space are computed the the actual BEV map can be filled with lidar data from the point-cloud. once this task is done the respestice height and intensity map of the same is computed as well, which are shown below
 
@@ -171,7 +171,7 @@ Intensity Map
 
 ![bev_int](https://user-images.githubusercontent.com/49077871/196767374-c59e25d6-f642-4f30-8be0-d95ef52d98b9.png)
 
-## 3.Model-based Object Detection in BEV Image
+## 3. Model-based Object Detection in BEV Image
 
 The goal of this task is to illustrate how a new model can be integrated into an existing framework. for this following steps are followed:
 
@@ -183,7 +183,7 @@ Output of the above task is as shown below:
 
 ![detection](https://user-images.githubusercontent.com/49077871/197003999-b7d53761-3daa-4477-a723-3538f50dde4d.png)
 
-## 4.Performance detection for 3D Object Detection
+## 4. Performance detection for 3D Object Detection
 
 The goal of this task is to find pairings between ground-truth labels and detections, so that we can determine if an object has been (a) missed (false negative), (b) successfully detected (true positive) or (c) has been falsely reported (false positive). For this geometrical overlap is computed between the bounding boxes of labels and detected objects and determine the percentage of this overlap in relation to the area of the bounding boxes. For multiple matches objects/detections pair with maximum IOU are kept, later false negatives and false positives are computed to calculate precision and recall. After processing all the frames of a sequence, the performance of the object detection algorithm is evaluated. 
 
