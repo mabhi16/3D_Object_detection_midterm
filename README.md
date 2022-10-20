@@ -104,7 +104,6 @@ In the main file `loop_over_dataset.py`, you can choose which steps of the algor
   - `detect_objects` executes the actual detection and returns a set of objects (only vehicles) 
   - `validate_object_labels` decides which ground-truth labels should be considered (e.g. based on difficulty or visibility)
   - `measure_detection_performance` contains methods to evaluate detection performance for a single frame
-precision = 0.9506578947368421, recall = 0.9444444444444444
 
 In case you do not include a specific step into the list, pre-computed binary files will be loaded instead. This enables you to run the algorithm and look at the results even without having implemented anything yet. The pre-computed results for the mid-term project need to be loaded using [this](https://drive.google.com/drive/folders/1-s46dKSrtx8rrNwnObGbly2nO3i4D7r7?usp=sharing) link. Please use the folder `darknet` first. Unzip the file within and put its content into the folder `results`.
 
