@@ -133,7 +133,7 @@ Parts of this project are based on the following repositories:
 ## License
 [License](LICENSE.md)
 
-### 3D Object detection
+# 3D Object detection
 
 ## 1.Compute Lidar Point-Cloud from Range Image
 
@@ -141,7 +141,7 @@ This task is about extracting two of the data channels within the range image, w
 
 ![range_int_img](https://user-images.githubusercontent.com/49077871/196755672-4c2e707c-84a9-4ba1-a52d-3cc5ba2ff132.PNG)
 
-# Visualize lidar point-cloud
+## Visualize lidar point-cloud
 
 The goal of this task is to use the Open3D library to display the lidar point-cloud in a 3d viewer in order to develop a feel for the nature of lidar point-clouds. Below the are few results of this exercise.
 
@@ -174,11 +174,28 @@ Intensity Map
 
 ## 3.Model-based Object Detection in BEV Image
 
-The goal of this task is to illustrate how a new model can be integrated into an existing framework. for this initially 
-1. 
+The goal of this task is to illustrate how a new model can be integrated into an existing framework. for this following steps are followed:
 
+1. The fpn_resnet is instantiated by adding configs from cloned repository
+2. 3D bounding boxes are extracted from the results
+3. Output of the model is made to give out bounding box format [class-id, x, y, z, h, w, l, yaw]
 
+Output of the above task is as shown below:
 
+![detection](https://user-images.githubusercontent.com/49077871/197003999-b7d53761-3daa-4477-a723-3538f50dde4d.png)
+
+## 4.Performance detection for 3D Object Detection
+
+The goal of this task is to find pairings between ground-truth labels and detections, so that we can determine if an object has been (a) missed (false negative), (b) successfully detected (true positive) or (c) has been falsely reported (false positive). For this geometrical overlap is computed between the bounding boxes of labels and detected objects and determine the percentage of this overlap in relation to the area of the bounding boxes. For multiple matches objects/detections pair with maximum IOU are kept, later false negatives and false positives are computed to calculate precision and recall. After processing all the frames of a sequence, the performance of the object detection algorithm is evaluated. 
+
+![det_perf](https://user-images.githubusercontent.com/49077871/197009240-5bc98595-629d-4f7e-a7f3-59b17442557f.png)
+
+precision = 0.9506578947368421, recall = 0.9444444444444444
+
+To make sure that the code produces plausible results, the flag configs_det.use_labels_as_objects should be set to True in a second run and this should produce 
+precision = 1.0, recall = 1.0, as labels are evaluated against themselves
+
+![use_labels_as_objects](https://user-images.githubusercontent.com/49077871/197012500-b664caa4-b66a-495c-a2aa-f4130cbc9e8f.png)
 
 
 
