@@ -224,7 +224,35 @@ Tasks implemented till now are capable of managing a single track but to accommo
 
 ### Camera Sensor Fusion
 
-Till now the only LIDAR data was used for tracking, in this task the camera detections are fused as well to compute decisions on tracks. At first in_fov() function is implemented to see 
+Till now the only LIDAR data was used for tracking, in this task the camera detections are fused as well to compute decisions on tracks. At first in_fov() function is implemented to see if the detections lie withi9ng the camera field of view. Projecting a 3D point to 2D image space leads to a non-linear measurement function h(x), which is computed and later on respective corrections are made to measurement vector z and measurement noise covariance matrix R.
+
+![track4_img](https://user-images.githubusercontent.com/49077871/203156260-ff4c8615-6b11-40f3-83a2-004853bd4eac.png)
+![track4_RMSE](https://user-images.githubusercontent.com/49077871/203156280-7e0b3410-5d35-44d7-a218-e26e89462c7f.png)
+
+multi target tracking was the challenging part of this project, the complexity of the system started increasing as we had to go through multiple thresholding to associate and disassociate tracks.
+
+## Benefits of camera-LIDAR fusion tracking over LIDAR only tracking
+
+sensor fusion aims to overcome the limitations of individual sensors by gathering and fusing data from multiple sensors to produce more reliable information with less uncertainty. In our case there 2 sensor LIDAR and camera. 
+
+Camera are very good at behavioural analysis like for traffic signal or sign detection, pedestrian crossing, lane segmentation etc.,. But it is highly dependent on the lighting and weather condition. LIDAR is very good at the perception tasks like object detection, range estimation for collision avoidance etc.,. But it is highly prone to errors that may occur due to vibrations and also it requires lot of calibration.
+
+With the help of sensor fusion system becomes more reliable as multiple sensor with different capabilities are used which can compensate for drawbacks of each other.
+
+## Challenges that Sensor fusion can face in real world scenario.
+
+Although the sensor fusion increases the reliabilty of the system, it adds to entropy of the system as well. More the sensors, more is the entropy. 
+
+* It is unusual to expect an ambient weather and lighting conditions, these factors highly influence the measurements made by sensors which affects the results adversely. 
+* Process and measurement noise variance are assumned to be constant in our case but it is not so in the real world, so this factor has to be compensated.
+* Multiple sensor working at same time generates a lot of data which are redundant in nature, this may create a bottle neck situation in the input pipeline.
+* As seen in our project there will be few flase positive detection, failing to correctly classify one might lead to unwanted braking.
+
+## Improvements that done 
+
+* Implement a more advanced data association, e.g. Global Nearest Neighbor (GNN) or Joint Probabilistic Data Association (JPDA)
+* Adapt the Kalman filter to also estimate the object's width, length, and height, instead of simply using the unfiltered lidar detections as we did.
+* Fine-tune the parameterization and see how low an RMSE can be achieved. One idea would be to apply the standard deviation values for lidar that found in the mid-term project.
 
 
 
