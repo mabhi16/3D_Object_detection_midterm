@@ -196,5 +196,35 @@ precision = 1.0, recall = 1.0, as labels are evaluated against themselves
 
 ![use_labels_as_objects](https://user-images.githubusercontent.com/49077871/197012500-b664caa4-b66a-495c-a2aa-f4130cbc9e8f.png)
 
+# Sensor Fusion and Tracking
+
+### Extended Kalman Filter
+
+The focus of this section was to implement predict and measurement update functions which form the building blocks of the extended Kalman filter. Predict function requires a motion model function F() and a process estimation function Q(). F() is modeled with an assumption of constant velocity process in 3D and corresponding process noise covariance matrix Q() depending on the current timestep dt.
+
+Similarly in the measurement update function, functions such as post-fit residual function gamma() and pre-fit residual covariance matrix S() are implemented.
+
+![track0_img](https://user-images.githubusercontent.com/49077871/203090142-49fa68a2-8d89-4521-a612-7696acb2fbad.png)
+![track0_RMSE](https://user-images.githubusercontent.com/49077871/203090199-c37c7442-e3ee-4e36-be48-6660ecfa4ea0.png)
+
+### Track Management
+
+Here the main task is to update and monitor the parameters that decide wheater track is to be affirmed or deleted. At first the x and P paramters are initialized with resultant x and P obtained from previous EKF function. 
+
+Initially if the track are unassigned the score for the track is reduced and checked for position uncertainty, if the uncertainity is higher the track is deleted. Later for the assigned track the score is increased and if the score increases above the pre-defined threshold (0.6) the track is set as confirmed.
+
+![track1_RMSE](https://user-images.githubusercontent.com/49077871/203095836-7986f238-8f4c-4e22-9597-5aecae04d025.png)
+
+### Data Association
+
+Tasks implemented till now are capable of managing a single track but to accommodate multi-target tracking, data association needs to be implemented. In the data association task, at first Mahalanobis distance(MHD) is calculated, and later gating function is implemented which uses MHD to remove the false positives being associated with the actual tracks. once we have eliminated the false positives association matrix is built which consists of tracks and measurements with respective MHD values. finally, the tracks are associated with the closest ones.
+
+![track3_det](https://user-images.githubusercontent.com/49077871/203112130-469bd248-f8e4-4828-a34e-059301251bb7.PNG)
+![track3_RMSE](https://user-images.githubusercontent.com/49077871/203112171-df8a3fb0-7ae7-4727-8602-d25db2b19967.png)
+
+### Camera Sensor Fusion
+
+Till now the only LIDAR data was used for tracking, in this task the camera detections are fused as well to compute decisions on tracks. At first in_fov() function is implemented to see 
+
 
 
