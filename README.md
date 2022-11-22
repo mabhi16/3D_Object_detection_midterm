@@ -229,7 +229,9 @@ Till now the only LIDAR data was used for tracking, in this task the camera dete
 ![track4_img](https://user-images.githubusercontent.com/49077871/203156260-ff4c8615-6b11-40f3-83a2-004853bd4eac.png)
 ![track4_RMSE](https://user-images.githubusercontent.com/49077871/203156280-7e0b3410-5d35-44d7-a218-e26e89462c7f.png)
 
-multi target tracking was the challenging part of this project, the complexity of the system started increasing as we had to go through multiple thresholding to associate and disassociate tracks.
+multi target tracking was the challenging part of this project, the complexity of the system started increasing as we had to go through multiple thresholding to associate and disassociate tracks. Below shown is the resulting tracking video which includes all 4 steps mentioned above.
+
+https://user-images.githubusercontent.com/49077871/203282715-b582d3cc-90a8-40e4-8baf-60cffbdd2706.mp4
 
 ## Benefits of camera-LIDAR fusion tracking over LIDAR only tracking
 
